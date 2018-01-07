@@ -29,6 +29,9 @@ namespace Interview
 
         public void Save(T item)
         {
+            if (_itemsList.Contains(item))
+                throw new ArgumentException("Item already exists.");
+
             _itemsList.Add(item);
         }
     }
