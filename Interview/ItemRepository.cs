@@ -15,7 +15,7 @@ namespace Interview
 
         public IEnumerable<T> All()
         {
-            throw new NotImplementedException();
+            return _itemsList;
         }
 
         public void Delete(IComparable id)
