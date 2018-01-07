@@ -72,5 +72,16 @@ namespace Interview.Test
             Assert.AreEqual(result, item);
         }
 
+
+        [Test]
+        [ExpectedException(typeof(Exception))]
+        public void ExceptionIsThrownWhenFindByIdDoesNotFindAnyItem()
+        {
+            //Arrange
+            var item = new Item() { Id = 1 };
+
+            //Act and Assert
+            Assert.That(() => subject.FindById(item.Id), Throws.TypeOf<Exception>());
+        }
     }
 }
