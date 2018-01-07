@@ -29,7 +29,7 @@ namespace Interview
 
         public void Save(T item)
         {
-            throw new NotImplementedException();
+            _itemsList.Add(item);
         }
     }
 }
