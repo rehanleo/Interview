@@ -29,6 +29,9 @@ namespace Interview
 
         public void Save(T item)
         {
+            if (item.Id == null)
+                throw new ArgumentNullException("Id","Parameter 'Id' cannot be null.");
+
             if (_itemsList.Contains(item))
                 throw new ArgumentException("Item already exists.");
 
