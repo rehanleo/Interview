@@ -20,7 +20,8 @@ namespace Interview
 
         public void Delete(IComparable id)
         {
-            throw new NotImplementedException();
+            var result = FindById(id);
+            _itemsList.Remove(result);
         }
 
         public T FindById(IComparable id)

@@ -83,5 +83,22 @@ namespace Interview.Test
             //Act and Assert
             Assert.That(() => subject.FindById(item.Id), Throws.TypeOf<Exception>());
         }
+
+        [Test]
+        public void ItemIsRemovedWhenDeleteIsCalled()
+        {
+            //Arrange
+            var item = new Item() { Id = 1 };
+            itemsList = new List<Item>();
+            itemsList.Add(item);
+            subject = new ItemRepository<Item>(itemsList);
+
+            //Act
+            subject.Delete(item.Id);
+
+            //Assert
+            Assert.AreEqual(0, itemsList.Count());
+        }
+
     }
 }
