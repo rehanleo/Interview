@@ -44,5 +44,16 @@ namespace Interview.Test
             //Act and Assert
             Assert.That(() => subject.Save(item), Throws.TypeOf<ArgumentException>());
         }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ExceptionIsThrownWhenNullItemIsAddedToList()
+        {
+            //Arrange
+            var item = new Item();
+
+            //Act and Assert
+            Assert.That(() => subject.Save(item), Throws.TypeOf<ArgumentNullException>());
+        }
     }
 }
