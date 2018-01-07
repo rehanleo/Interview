@@ -25,7 +25,12 @@ namespace Interview
 
         public T FindById(IComparable id)
         {
-            return _itemsList.First(x => x.Id.CompareTo(id) == 0);
+            var result = _itemsList.FirstOrDefault(x => x.Id.CompareTo(id) == 0);
+
+            if (result == null)
+                throw new Exception($"No item found for id: {id}");
+
+            return result;
         }
 
         public void Save(T item)
