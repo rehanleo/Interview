@@ -100,5 +100,33 @@ namespace Interview.Test
             Assert.AreEqual(0, itemsList.Count());
         }
 
+        [Test]
+        [ExpectedException(typeof(Exception))]
+        public void ExceptionIsThrownWhenDeleteIsCalledWithNonExistantItemId()
+        {
+            //Arrange
+            var item = new Item() { Id = 1 };
+
+            //Act and Assert
+            Assert.That(() => subject.Delete(item.Id), Throws.TypeOf<Exception>());
+        }
+
+        [Test]
+        public void AllReturnsFullListOfAllTheItems()
+        {
+            //Arrange
+            var item1 = new Item() { Id = 1 };
+            var item2 = new Item() { Id = 2 };
+            itemsList = new List<Item>();
+            itemsList.Add(item1);
+            itemsList.Add(item2);
+            subject = new ItemRepository<Item>(itemsList);
+
+            //Act
+            var result = subject.All();
+
+            //Assert
+            Assert.AreEqual(itemsList.Count(), result.Count());
+        }
     }
 }
