@@ -8,7 +8,7 @@ using Assert = NUnit.Framework.Assert;
 namespace Interview.Test
 {
     [TestFixture]
-    public class ItemTests
+    public class ItemRepositoryTests
     {
         private IRepository<Item> subject;
         private IList<Item> itemsList;
@@ -55,5 +55,22 @@ namespace Interview.Test
             //Act and Assert
             Assert.That(() => subject.Save(item), Throws.TypeOf<ArgumentNullException>());
         }
+
+        [Test]
+        public void ItemIsReturnedCorrectlyWhenFindByIdIsCalled()
+        {
+            //Arrange
+            var item = new Item() { Id = 1 };
+            itemsList = new List<Item>();
+            itemsList.Add(item);
+            subject = new ItemRepository<Item>(itemsList);
+
+            //Act
+            var result = subject.FindById(item.Id);
+
+            //Assert
+            Assert.AreEqual(result, item);
+        }
+
     }
 }
